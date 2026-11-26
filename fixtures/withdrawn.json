@@ -1,0 +1,7 @@
+{
+  "packs": [
+    {"size": 4, "terms": "Four-unit packs are currently offered with no cap on the number of packs ordered."},
+    {"size": 7, "terms": "Seven-unit packs are an active offer and customers can order any number of them."},
+    {"size": 9, "terms": "The proposed nine-unit pack offer was withdrawn before taking effect. Nine-unit packs cannot be ordered."}
+  ]
+}

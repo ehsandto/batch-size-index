@@ -11,3 +11,5 @@ The contract derives residue tables using minimum reachable quantities modulo th
 In the fictional fixtures, a request for at least 17 requires 18 units when the nine-unit pack is withdrawn. When the nine-unit pack is active, the contract finds an exact 17. The threshold above which every integer is attainable falls from 18 to 11.
 
 Install `requirements-dev.txt`, then run `python -m pytest tests -q` and `genvm-lint check contracts/BatchSizeIndex.py`.
+
+[Submission](SUBMISSION.md) · [StudioNet proofs](LIVE_PROOFS.md)

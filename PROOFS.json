@@ -1,0 +1,311 @@
+{
+  "network": "StudioNet",
+  "source_commit": "a1558cd5354daec4fac737d452c59f4660ecec65",
+  "transactions": [
+    {
+      "step": "deploy",
+      "signer": "0x06A438DAB70D9d23Acf9Ac57304f55b4141690C5",
+      "nonce": "0x0",
+      "functionName": "deploy",
+      "args": [],
+      "fee_wei": "78852000002588",
+      "hash": "0xe1362ba5d2a65c659129f2e7135607e71da7e993e049c3606c8ee2d761d46f28",
+      "receipt": {
+        "hash": "0xe1362ba5d2a65c659129f2e7135607e71da7e993e049c3606c8ee2d761d46f28",
+        "address": "0xA3f3513030110d5cfbdF3FC3c8625ca4596daf81",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "withdrawn",
+      "signer": "0x06A438DAB70D9d23Acf9Ac57304f55b4141690C5",
+      "nonce": "0x1",
+      "functionName": "index_catalog",
+      "args": [
+        "ehsandto/batch-size-index/a1558cd5354daec4fac737d452c59f4660ecec65/fixtures/withdrawn.json",
+        "83b04e890ab6310ed9250e3021153eb3c63b0c1b30c135c8a749306a872761e2"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x9c90d9db488571a12e507a5c91212b87728fb668d54938d5e5ca7d62520b7015",
+      "receipt": {
+        "hash": "0x9c90d9db488571a12e507a5c91212b87728fb668d54938d5e5ca7d62520b7015",
+        "address": "0xA3f3513030110d5cfbdF3FC3c8625ca4596daf81",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "active",
+      "signer": "0x4CA64DA1c58e187D5b871ad0f6017034cd67D369",
+      "nonce": "0x0",
+      "functionName": "index_catalog",
+      "args": [
+        "ehsandto/batch-size-index/a1558cd5354daec4fac737d452c59f4660ecec65/fixtures/active.json",
+        "3a43fdfa1564e5fc50fef78127ef47a0dba5b9e0fd064e33a24ef22d44e5294f"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x5a533e8fc3cf0a3e5161955c1f52aad5b5b2f135d7b9fa894bb53bf3de404a60",
+      "receipt": {
+        "hash": "0x5a533e8fc3cf0a3e5161955c1f52aad5b5b2f135d7b9fa894bb53bf3de404a60",
+        "address": "0xA3f3513030110d5cfbdF3FC3c8625ca4596daf81",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "validator_execution_seen": true
+      }
+    }
+  ],
+  "catalogs": {
+    "withdrawn": {
+      "evidence": {
+        "labels": [
+          "ACTIVE",
+          "ACTIVE",
+          "INACTIVE"
+        ],
+        "packs": [
+          {
+            "size": 4,
+            "terms": "Four-unit packs are currently offered with no cap on the number of packs ordered."
+          },
+          {
+            "size": 7,
+            "terms": "Seven-unit packs are an active offer and customers can order any number of them."
+          },
+          {
+            "size": 9,
+            "terms": "The proposed nine-unit pack offer was withdrawn before taking effect. Nine-unit packs cannot be ordered."
+          }
+        ],
+        "sha256": "83b04e890ab6310ed9250e3021153eb3c63b0c1b30c135c8a749306a872761e2",
+        "text": "{\n  \"packs\": [\n    {\"size\": 4, \"terms\": \"Four-unit packs are currently offered with no cap on the number of packs ordered.\"},\n    {\"size\": 7, \"terms\": \"Seven-unit packs are an active offer and customers can order any number of them.\"},\n    {\"size\": 9, \"terms\": \"The proposed nine-unit pack offer was withdrawn before taking effect. Nine-unit packs cannot be ordered.\"}\n  ]\n}\n",
+        "url": "https://raw.githubusercontent.com/ehsandto/batch-size-index/a1558cd5354daec4fac737d452c59f4660ecec65/fixtures/withdrawn.json"
+      },
+      "guaranteed": {
+        "all_multiples_from": 18,
+        "minima": [
+          0,
+          21,
+          14,
+          7
+        ],
+        "modulus": 4,
+        "parents": [
+          null,
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "unit": 1
+      },
+      "possible": {
+        "all_multiples_from": 18,
+        "minima": [
+          0,
+          21,
+          14,
+          7
+        ],
+        "modulus": 4,
+        "parents": [
+          null,
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "unit": 1
+      },
+      "quote": {
+        "guaranteed": {
+          "all_multiples_from": 18,
+          "packs": [
+            [
+              4,
+              1
+            ],
+            [
+              7,
+              2
+            ]
+          ],
+          "quantity": 18,
+          "step": 1
+        },
+        "possible": {
+          "all_multiples_from": 18,
+          "packs": [
+            [
+              4,
+              1
+            ],
+            [
+              7,
+              2
+            ]
+          ],
+          "quantity": 18,
+          "step": 1
+        }
+      }
+    },
+    "active": {
+      "evidence": {
+        "labels": [
+          "ACTIVE",
+          "ACTIVE",
+          "ACTIVE"
+        ],
+        "packs": [
+          {
+            "size": 4,
+            "terms": "Four-unit packs are currently offered with no cap on the number of packs ordered."
+          },
+          {
+            "size": 7,
+            "terms": "Seven-unit packs are an active offer and customers can order any number of them."
+          },
+          {
+            "size": 9,
+            "terms": "The temporary hold on nine-unit packs ended. The nine-unit pack is now offered and customers can order any number of them."
+          }
+        ],
+        "sha256": "3a43fdfa1564e5fc50fef78127ef47a0dba5b9e0fd064e33a24ef22d44e5294f",
+        "text": "{\n  \"packs\": [\n    {\"size\": 4, \"terms\": \"Four-unit packs are currently offered with no cap on the number of packs ordered.\"},\n    {\"size\": 7, \"terms\": \"Seven-unit packs are an active offer and customers can order any number of them.\"},\n    {\"size\": 9, \"terms\": \"The temporary hold on nine-unit packs ended. The nine-unit pack is now offered and customers can order any number of them.\"}\n  ]\n}\n",
+        "url": "https://raw.githubusercontent.com/ehsandto/batch-size-index/a1558cd5354daec4fac737d452c59f4660ecec65/fixtures/active.json"
+      },
+      "guaranteed": {
+        "all_multiples_from": 11,
+        "minima": [
+          0,
+          9,
+          14,
+          7
+        ],
+        "modulus": 4,
+        "parents": [
+          null,
+          [
+            0,
+            9
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "unit": 1
+      },
+      "possible": {
+        "all_multiples_from": 11,
+        "minima": [
+          0,
+          9,
+          14,
+          7
+        ],
+        "modulus": 4,
+        "parents": [
+          null,
+          [
+            0,
+            9
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "unit": 1
+      },
+      "quote": {
+        "guaranteed": {
+          "all_multiples_from": 11,
+          "packs": [
+            [
+              4,
+              2
+            ],
+            [
+              9,
+              1
+            ]
+          ],
+          "quantity": 17,
+          "step": 1
+        },
+        "possible": {
+          "all_multiples_from": 11,
+          "packs": [
+            [
+              4,
+              2
+            ],
+            [
+              9,
+              1
+            ]
+          ],
+          "quantity": 17,
+          "step": 1
+        }
+      }
+    }
+  },
+  "test_faucets": [
+    {
+      "address": "0x06A438DAB70D9d23Acf9Ac57304f55b4141690C5",
+      "requested_wei": "10000000000000000"
+    },
+    {
+      "address": "0x4CA64DA1c58e187D5b871ad0f6017034cd67D369",
+      "requested_wei": "10000000000000000"
+    }
+  ],
+  "address": "0xA3f3513030110d5cfbdF3FC3c8625ca4596daf81",
+  "source": {
+    "address": "0xA3f3513030110d5cfbdF3FC3c8625ca4596daf81",
+    "source_match": true,
+    "sha256": "e8965dba660213135bc681cdeac719e349943c5215667ce8e8e7fbd95e984435"
+  },
+  "verified": true
+}

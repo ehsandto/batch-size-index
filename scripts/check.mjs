@@ -3,6 +3,7 @@ import crypto from 'node:crypto';
 import dns from 'node:dns';
 import assert from 'node:assert/strict';
 import {abi} from 'genlayer-js';
+import {toHex, toRlp} from 'viem';
 dns.setDefaultResultOrder('ipv4first');
 export const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 export async function rpc(method,params){
@@ -14,8 +15,13 @@ export async function rpc(method,params){
   if(p.error?.code===-32000&&p.error?.message==='execution failed'){
    const e=Error('Contract read reverted');e.code=-32000;e.details='execution failed';throw e;
   }
+  if (method === 'gen_call' && p.error?.code === -32603 && /^RLP /.test(p.error.message)) {
+   const error = Error(p.error.message);
+   error.code = 'STUDIO_RLP';
+   throw error;
+  }
   if(p.error||p.result==null)throw Error('RPC failure');return p.result;
- }catch(e){if(e.code===-32000&&e.details==='execution failed')throw e;
+ }catch(e){if(e.code==='STUDIO_RLP'||(e.code===-32000&&e.details==='execution failed'))throw e;
   if(attempt===6)throw Error('Read-only RPC unavailable: '+method);await new Promise(r=>setTimeout(r,Math.min(8000,2000*(attempt+1))));}
 }
 export function jsonSafe(x){
@@ -25,10 +31,16 @@ export function jsonSafe(x){
  if(x&&typeof x==='object')return Object.fromEntries(Object.entries(x).map(([k,v])=>[k,jsonSafe(v)]));return x;
 }
 export async function read(address,functionName,args){
- // This Studio endpoint accepts raw calldata. Its long RLP-wrapped read path rejects >255-byte calls.
- // Encode with the pinned SDK but do not add the problematic RLP envelope. Never sign/send here.
- const data='0x'+Buffer.from(abi.calldata.encode(abi.calldata.makeCalldataObject(functionName,args,{}))).toString('hex');
- const result=await rpc('gen_call',[{type:'read',to:address,from:'0x'+'0'.repeat(40),data,transaction_hash_variant:'latest-nonfinal'}]);
+ const encoded = toHex(abi.calldata.encode(abi.calldata.makeCalldataObject(functionName, args, {})));
+ const call = {type:'read', to:address, from:'0x'+'0'.repeat(40), transaction_hash_variant:'latest-nonfinal'};
+ let result;
+ try {
+   result = await rpc('gen_call', [{...call, data: encoded}]);
+ } catch (error) {
+   if (error.code !== 'STUDIO_RLP') throw error;
+   // The Studio parser can mistake raw calldata for RLP. Retry with the SDK read envelope.
+   result = await rpc('gen_call', [{...call, data: toRlp([encoded, toHex(false)])}]);
+ }
  if(typeof result!=='string'||!/^(?:0x)?[0-9a-fA-F]*$/.test(result))throw Error('Unexpected read response');
  return jsonSafe(abi.calldata.decode(Uint8Array.from(Buffer.from(result.replace(/^0x/,''),'hex'))));
 }
